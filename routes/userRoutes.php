@@ -11,7 +11,7 @@ $app->post('/users/login', function (Request $request, Response $response) {
     $requestBody = $request->getBody();
     $data = json_decode($requestBody, true);
     $email = $data['email'];
-    $password = $data['password'];
+    $password = $sha512 = hash("sha512",$data['pass']);
 
     // Crear la consulta utilizando parámetros preparados
     $query = 'SELECT * FROM users WHERE email = ? AND pass = ?';
@@ -59,7 +59,7 @@ $app->post('/users/register', function (Request $request, Response $response) {
     $fullname  = $data['fullname'];
     $username  = $data['username'];
     $email  = $data['email'];
-    $pass  = $data['pass'];
+    $pass  = $sha512 = hash("sha512",$data['pass']);
     $height  = $data['height'];
     $weight  = $data['weight'];
     $birthday  = $data['birthday'];

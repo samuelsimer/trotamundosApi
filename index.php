@@ -5,6 +5,11 @@ use Slim\Factory\AppFactory;
 require 'Config/DatabaseConector.php';
 require 'services/JwtService.php';
 
+// Habilitar CORS en PHP
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Content-Type');
+
 $dbConfig = require './Config/config.php'; // Archivo de configuración con la información de la base de datos
 try {
 
